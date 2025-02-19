@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 10px;
+}
+
+#mainTitle {
+  font-size: 3rem; /* Large text size */
+  font-weight: 800; /* Bold and impactful */
+  text-transform: uppercase; /* Uppercase for a strong presence */
+  text-align: center; /* Center alignment */
+  padding: 15px 30px; /* Padding for better spacing */
+  border-radius: 12px; /* Smooth rounded corners */
+  background: linear-gradient(
+    45deg,
+    #ff7eb3,
+    #ffbf69,
+    #8ac926
+  ); /* Three-color gradient */
+  color: black; /* White text for contrast */
+  display: inline-block; /* Allows padding and margin control */
+  letter-spacing: 2px; /* Spacing between letters for better readability */
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Outer shadow for pop-out effect */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.mainTitle:hover {
+  transform: scale(1.05); /* Slight enlargement on hover */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.button {
+  font-size: 0.5rem; 
+  font-weight: 600; /* Medium-bold for a professional look */
+  text-transform: uppercase; /* Keeps it consistent with the title */
+  padding: 12px 24px; /* Balanced padding for a comfortable click area */
+  border-radius: 8px; /* Smooth rounded corners */
+  background: linear-gradient(45deg, #ff7eb3, #ffbf69, #8ac926); /* Matching gradient */
+  color: black; /* White text for contrast */
+  border: none; /* No border for a clean look */
+  cursor: pointer; /* Indicates clickability */
+  text-align: center; /* Centers text */
+  display: inline-block; /* Allows better positioning */
+  transition: all 0.3s ease-in-out; /* Smooth animation */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  letter-spacing: 1px; /* Small spacing for readability */
+  margin: 10px; /* Added margin to create space between buttons */
+}
+
+.button:hover {
+  transform: scale(1.08); /* Slight zoom on hover */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* More depth on hover */
+  filter: brightness(1.1); /* Enhances colors slightly */
+}
+
+.button:active {
+  transform: scale(0.98); /* Click effect */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}
+
+.button.outline {
+  background: none;
+  border: 2px solid #ff7eb3; /* Outline that matches the gradient */
+  color: #ff7eb3; /* Gradient’s first color */
+}
+
+.button.outline:hover {
+  background: #ff7eb3;
+  color: white;
+}
+
+
+.products {
+  display: flex; /* Aligns all product components in a row */
+  flex-wrap: wrap; /* Ensures responsiveness */
+  gap: 50px; /* Space between products */
+  justify-content: center; /* Centers products in the row */
+  padding: 10px;
+}
+
+.product {
+  width: 300px; /* Fixed width for each product */
+  border: 2px solid #ddd; /* Light border */
+  border-radius: 12px; /* Smooth rounded corners */
+  overflow: hidden; /* Keeps everything inside the box */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background: white; /* Background for a clean look */
+}
+
+.product:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.product-details {
+  padding: 15px;
+  text-align: center; /* Centers text */
+}
+
+.product-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 8px;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+#imagePart {
+  width: 90%; /* Reduced size to fit neatly inside */
+  height: 180px; /* Fixed height for consistency */
+  object-fit: contain; /* Ensures the whole image is visible */
+  border-radius: 8px; /* Adds slight rounding to the image */
+  margin-top: 10px; /* Adds space above image */
+  padding: 5px; /* Creates some spacing between image and border */
+  background: #f8f8f8; /* Light background to separate image */
+}
