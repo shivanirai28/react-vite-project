@@ -1344,8 +1344,8 @@ export default App;
 */
 
 // ? ============ Using switch  ============
-/*
 
+/*
 import React, { useState } from "react";
 
 const App = () => {
@@ -1396,7 +1396,6 @@ const App = () => {
 
 
 export default App
-
 */
 
 // ? =========== Logical AND Operator =========
@@ -1422,3 +1421,147 @@ const App = () => {
 export default App;
 */
 
+// ? Example 1:
+/*
+
+import React, { useState } from "react";
+
+const App = () => {
+  let students = [
+    { sname: "Shivani", isPlaced: true },
+    { sname: "Tanmay", isPlaced: true },
+    { sname: "Gyandeep", isPlaced: false },
+    { sname: "Shriti", isPlaced: true },
+    { sname: "Shreya", isPlaced: false },
+    { sname: "Amit", isPlaced: true },
+    { sname: "Megha", isPlaced: false },
+    { sname: "Kanishka", isPlaced: false },
+  ];
+  return (
+    <>
+      <h1>Students details</h1>
+      {students.map((val, ind) => {
+        console.log(val, ind);
+        return (
+          <p>
+            {val.sname} {val.isPlaced ? "✅" : "❌"}
+          </p>
+        );
+      })}
+    </>
+  );
+};
+
+export default App;
+*/
+// ? Example 2:
+/*
+import React, { useState } from "react";
+
+const App = () => {
+  let [toggle, setToggle] = useState(false);
+
+  return (
+    <>
+      <h1>My Conditional rendring website</h1>
+      <article>
+        {toggle ? (
+          <i
+            className="fa-solid fa-toggle-on"
+            onClick={() => setToggle(false)}
+          ></i>
+        ) : (
+          <i
+            className="fa-solid fa-toggle-off"
+            onClick={() => setToggle(true)}
+          ></i>
+        )}
+      </article>
+      <aside>
+        <h4><i class="fa-solid fa-house"></i> {toggle? <span>Home</span>:""}</h4>
+        <h4><i class="fa-solid fa-house"></i> {toggle? <span>Home</span>:""}</h4>
+        <h4><i class="fa-solid fa-house"></i> {toggle? <span>Home</span>:""}</h4>
+        <h4><i class="fa-solid fa-house"></i> {toggle? <span>Home</span>:""}</h4>
+        <h4><i class="fa-solid fa-house"></i> {toggle? <span>Home</span>:""}</h4>
+        <h4><i class="fa-solid fa-house"></i> {toggle? <span>Home</span>:""}</h4>
+      </aside>
+    </>
+  );
+};
+
+export default App;
+*/
+
+//? ======= Task on conditional rendring=======
+import React, { useState } from "react";
+import style from "./gemini.module.css";
+
+const App = () => {
+  let [bar, setBar] = useState(true);
+
+  return (
+    <>
+      <div className={style.mainTitle}>
+        <h1>Hello , shivani</h1>
+      </div>
+      <div className={`${style.aside} ${bar ? "" : style.collapsed}`}>
+        <article className={style.bar}>
+          {bar ? (
+            <i class="fa-solid fa-bars" onClick={() => setBar(false)}></i>
+          ) : (
+            <i className="fa-solid fa-bars" onClick={() => setBar(true)}></i>
+          )}
+        </article>
+        <aside>
+          <h4 className={style.newChat}>
+            <i class="fa-solid fa-plus"></i> {bar ? <span>New Chat</span> : ""}
+          </h4>
+          <br />
+          <br />
+          <br />
+          <br /> 
+          <br />
+          <br />
+          <br />
+          <br /> 
+          <br />
+          <br />
+          <br /> 
+          <br />
+          <br />
+        
+        
+        
+
+          <h4>
+            <i class="fa-solid fa-gem"></i>{" "}
+            {bar ? <span>Gem Manager</span> : ""}
+          </h4>
+          <h4>
+            <i class="fa-solid fa-circle-question"></i>{" "}
+            {bar ? <span>Help</span> : ""}
+          </h4>
+          <h4>
+            <i class="fa-solid fa-clock-rotate-left"></i>{" "}
+            {bar ? <span>Activity</span> : ""}
+          </h4>
+          <h4>
+            <i class="fa-solid fa-gear"></i> {bar ? <span>Settings</span> : ""}
+          </h4>
+          <h4>
+            {" "}
+            {bar ? (
+              <div>
+                <i class="fa-solid fa-circle"></i> <span>Delhi , India</span>
+              </div>
+            ) : (
+              ""
+            )}
+          </h4>
+        </aside>
+      </div>
+    </>
+  );
+};
+
+export default App;
