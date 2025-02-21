@@ -1493,6 +1493,7 @@ export default App;
 */
 
 //? ======= Task on conditional rendring=======
+/*
 import React, { useState } from "react";
 import style from "./gemini.module.css";
 
@@ -1561,6 +1562,107 @@ const App = () => {
         </aside>
       </div>
     </>
+  );
+};
+
+export default App;
+*/
+
+// ? ======== FORM TASK on REACT Js =======
+// ! =========== useRef() Hook ========
+/*
+To get the refreence of an element we have to use useRef() Hook.
+For refrence of an elemnet we have to use useRef() Hook.
+    1. import useRef()
+    2.store in a variable
+    3. to pass refrence we have to use "ref prop" and assign the variable name.
+    
+     refrence variable should be assigned to only one elemnet.
+     If we repeat the variable name for multiple elements , it will target the most updated element.
+*/
+
+
+/*
+
+import { Children, useRef } from "react";
+import React from "react";
+
+const App = () => {
+  let nameRef = useRef();
+  let emailRef = useRef();
+  let mobileRef = useRef();
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(nameRef.current.value);
+    console.log(emailRef.current.value);
+    console.log(mobileRef.current.value);
+    console.log({UserName : nameRef.current.value , useEmail : emailRef.current.value, MobileNo: mobileRef.current.value})
+    
+  };
+
+  return (
+    <>
+      <h1>Form</h1>
+      <form onSubmit={handleSubmit}>
+        <label> Name :</label>
+        <input type="text" ref={nameRef} /> <br />
+        <br />
+        <label> Email :</label>
+        <input type="text" ref={emailRef} /> <br />
+        <br />
+        <label> Mobile No :</label>
+        <input type="text" ref={mobileRef} /> <br />
+        <br />
+        <button >Submit</button>
+      </form>
+    </>
+  );
+};
+
+export default App;
+*/
+
+// ==== task on useRef() Hook ========
+
+import { useRef, useState } from "react";
+import React from "react";
+
+const App = () => {
+  let num1Ref = useRef();
+  let num2Ref = useRef();
+  let num3Ref = useRef();
+  let [sum , setSum] = useState("")
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
+   let a = Number(num1Ref.current.value) + Number(num2Ref.current.value) + Number(num3Ref.current.value) 
+   // instead of number we can write + to chnge the string in number type
+   // or we can multiply it by 1 - (num1Ref.current.value*1)
+     setSum(a);
+
+  };
+
+  return (
+    <center>
+      <h1>Sum - {sum} </h1>
+      <form onSubmit={handleSubmit}>
+      <label> Number1 :</label>
+      <input type="number" ref={num1Ref} /> <br />
+      <br />
+      <label> Number2 :</label>
+      <input type="number" ref={num2Ref} /> <br />
+      <br />
+      <label> Number3 :</label>
+      <input type="number" ref={num3Ref} /> <br />
+      <br />
+      <button>submit</button>
+      </form>
+    {sum && <h2>Output is : {sum}</h2>}
+      
+    </center>
   );
 };
 
