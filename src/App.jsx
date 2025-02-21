@@ -1569,6 +1569,7 @@ export default App;
 */
 
 // ? ======== FORM TASK on REACT Js =======
+// ? ========== Uncontrolled form ========
 // ! =========== useRef() Hook ========
 /*
 To get the refreence of an element we have to use useRef() Hook.
@@ -1580,7 +1581,6 @@ For refrence of an elemnet we have to use useRef() Hook.
      refrence variable should be assigned to only one elemnet.
      If we repeat the variable name for multiple elements , it will target the most updated element.
 */
-
 
 /*
 
@@ -1625,7 +1625,7 @@ export default App;
 */
 
 // ==== task on useRef() Hook ========
-
+/*
 import { useRef, useState } from "react";
 import React from "react";
 
@@ -1663,6 +1663,52 @@ const App = () => {
     {sum && <h2>Output is : {sum}</h2>}
       
     </center>
+  );
+};
+
+export default App;
+*/
+
+// ? ========== Controlled form ========
+
+import React, { useState } from "react";
+
+const App = () => {
+  let [name, setName] = useState("");
+  let [email, setEmail] = useState("");
+  let [mobile, setMobile] = useState("");
+
+  return (
+    <>
+      <h1>Registration Form</h1>
+      <form action="">
+        <p>
+          <label > Name - </label>
+          <input type="text"  value={name} onChange={(e)=>{
+            console.log(e.target.value)
+            setName(e.target.value)
+
+          }}/>
+        </p>
+        <p>
+          <label >Email - </label>
+          <input type="text" value={email} onChange={(e)=>{
+            console.log(e.target.value)
+            setEmail(e.target.value)
+          }} />
+        </p>
+        <p>
+          <label > Mobile - </label>
+          <input type="text" value={mobile} onChange={(e)=>{
+             console.log(e.target.value)
+             setMobile(e.target.value)
+          }} />
+        </p>
+        <p>
+          <button>Submit</button>
+        </p>
+      </form>
+    </>
   );
 };
 
