@@ -1572,7 +1572,7 @@ export default App;
 // ? ========== Uncontrolled form ========
 // ! =========== useRef() Hook ========
 /*
-To get the refreence of an element we have to use useRef() Hook.
+To get the refrence of an element we have to use useRef() Hook.
 For refrence of an elemnet we have to use useRef() Hook.
     1. import useRef()
     2.store in a variable
@@ -1854,6 +1854,7 @@ export default App
 */
 
 // ? example 3.1 :
+/*
 
 import React from "react";
 import { useState } from "react";
@@ -1915,5 +1916,148 @@ const App = () => {
     </center>
   );
 };
+
+export default App;
+*/
+
+// ? ====== Class based Component =========
+// ! example 1:
+/*
+import React from "react";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      count: 0,
+      
+    };
+    console.log(this);
+  }
+
+  render() {
+
+    return (
+      <div>
+        <h1>I am App Component</h1>
+        <p> counter : { this.state.count}</p>
+        <button
+          onClick={() => {
+            this.setState({ count: this.state.count + 1 });
+          }}
+        >
+          increment
+        </button>
+      </div>
+    );
+  }
+}
+
+export default App;
+*/
+// ! example 2:
+
+import React from "react";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      count1: 0,
+      count2: 0,
+      count3: 0,
+      
+    };
+    console.log(this);
+  }
+
+  render() {
+
+    return (
+      <center>
+       <div> <h1>Counter 1</h1>
+        <p> counter1 : { this.state.count1}</p>
+        <button
+          onClick={() => {
+            this.setState({ count1: this.state.count1 - 1 });
+          }}
+        >
+          decrement
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ count1: 0 });
+          }}
+        >
+          reset
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ count1: this.state.count1 + 1 });
+          }}
+        >
+          increment
+        </button>
+        </div>
+
+
+        <div> <h1>Counter 2</h1>
+        <p> counter2 : { this.state.count2}</p>
+        <button
+          onClick={() => {
+            this.setState({ count2: this.state.count2 - 1 });
+          }}
+        >
+          decrement
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ count2: 0 });
+          }}
+        >
+          reset
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ count2: this.state.count2 + 1 });
+          }}
+        >
+          increment
+        </button>
+        </div>
+
+
+
+        <div> <h1>Counter 3</h1>
+        <p> counter3 : { this.state.count3}</p>
+        <button
+          onClick={() => {
+            this.setState({ count3: this.state.count3 - 1 });
+          }}
+        >
+          decrement
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ count3: 0 });
+          }}
+        >
+          reset
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ count3: this.state.count3 + 1 });
+          }}
+        >
+          increment
+        </button></div>
+        
+
+      </center>
+    );
+  }
+}
 
 export default App;
