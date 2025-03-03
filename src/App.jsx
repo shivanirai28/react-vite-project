@@ -1921,6 +1921,7 @@ export default App;
 */
 
 // ? ====== Class based Component =========
+// ? ======= life cycle method of a component ======
 // ! example 1:
 /*
 import React from "react";
@@ -1957,6 +1958,7 @@ class App extends React.Component {
 export default App;
 */
 // ! example 2:
+/*
 
 import React from "react";
 
@@ -2061,3 +2063,190 @@ class App extends React.Component {
 }
 
 export default App;
+*/
+
+// ! ======= Mounting Phase =====
+/*
+Whenever the component is created and inserted into the DOM is called Mounting Phase.
+ ? 1. Constructor ()
+    a. It is the first method to be called in the mounting phase.
+    b. This method will only execute once after the component is mounted.
+    c. It is the best Place to do the initalizations.
+    d. To use "this" keyword,
+       i. firstly, we have to extend the features of React. Component 
+       11. we have to pass props as parameter to constructor method
+       iii. we must use super call.
+       iv. "this" keyword will points to the current component.
+   e. By default CBC contains state data.
+   f. To create state data, this.state = object;
+   g. To udpate the state data, this. setState(new state obj)
+? 2. getDerivedStateFromProps():
+    a. getDerivedStateFromProps) method should be static.
+    b. It will execute just before the render) method.
+    c. It will return the new state data.
+    d. it accepts prev props, prevsate as a paramters.
+    e. It must and should return a valid state object / null.
+? 3. render()
+a. It is the only mandatory method in CBC's,
+b. It will execute for each and every updates.
+c. render) method allows us to write JSX(html + js);
+d. It is not the best place to do side effects
+e. side effects means the things which are not in react ex: fetch, timers, window properties, etc.
+
+? 4. componentDidMount()
+a. It is the last method in the mounting phase.
+b. It will execute only once after the component is mounted.
+c. Preferred place to do side effects.
+d. It is the best place to call the API's.
+e. It is the best place to update the state data.
+f. It is the best place to interact with the DOM.
+g. It is the best place to call the timers.
+
+*/
+
+/*
+import React from "react";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      counter: 0,
+    };
+    console.log(this.state);
+  }
+
+  static getDerivedStateFromProps(prevprops, prevstate) {
+    console.log("I am getDerivedStateFromProps");
+
+    console.log(prevstate);
+    return null;
+  }
+
+  componentDidMount() {
+    console.log("I am componentDidMount() method");
+    let getdata = async () => {
+      let res = await fetch("https://fakestoreapi.com/products");
+      let data = await res.json();
+      console.log(data);
+    };
+    getdata();
+  }
+
+  render() {
+    console.log("I am render () method");
+    console.log(this.state);
+    return (
+      <>
+        <h1> I am App component</h1>
+        <h2> Counter : {this.state.counter}</h2>
+        <button
+          onClick={() => {
+            this.setState({ counter: this.state.counter + 1 });
+          }}
+        >
+          update
+        </button>
+      </>
+    );
+  }
+}
+export default App;
+*/
+
+// ! ======= Updating Phase =====
+
+/*
+Whenever there some changes in component, react will re-render the component and this phase is called updating phase.
+changes in props, state.
+
+  ? 1. getDerivedStateFromProps () :
+       This method is as same in Mouting Phase.
+       This method will execute just before the render method.
+       It will provide the static state data.
+       It will return a new object as state data.
+       
+  ? 2. shouldComponentUpdate():
+       This method helps us to improve the performance of an application.
+       It will compare the previous props/states with current props/states.
+       It will return a boolean value.
+       If true, render) method will execute If false, render() method will not execute By default the value is true.
+       Called to determine whether the change in props and state should trigger a re-render.
+       Component always returns true.
+       PureComponent implements a shallow comparison on props and state and returns true if any props or states have changed.
+       If false is returned, Component. render, componentWillUpdate and componentDidUpdate will not be called.
+  ? 3. render():
+       As same in mounting phase
+  ? 4. getSnapshotBeforeUpdate():
+        This method will execute just before the DOM is updated.
+        It will return the snapshot value.
+        It accepts prevprops, prevstate as parameters.
+        It will not accept the snapshot value.
+        It must return a snapshot value.  
+  ? 5. componentDidUpdate():
+        This method will execute just after the DOM is updated.
+        It will accept prevprops, prevstate, snapshot as parameters.
+        It is the best place to do side effects.
+        It is the best place to interact with the DOM.
+        It is the best place to call the API's.
+        It is the best place to update the state data.
+        It is the best place to call the timers.
+
+
+*/
+
+
+import React from "react";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      counter: 0,
+    };
+    console.log(this.state);
+  }
+
+  static getDerivedStateFromProps(prevprops, prevstate) {
+    console.log("I am getDerivedStateFromProps");
+
+    return null;
+  }
+
+  shouldComponentUpdate(prevprops, prevstate){
+console.log("I am  shouldComponentUpdate () method");
+return true;
+  }
+
+  getSnapshotBeforeUpdate(prevprops, prevstate){
+    console.log("I am getSnapshotBeforeUpdate () method");
+    return prevstate;
+  }
+
+  componentDidUpdate(prevprops, prevstate, snapshot){
+    console.log("I am componentDidUpdate () method");
+    console.log( " My data is : " ,snapshot);
+  }
+
+  render() {
+    console.log("I am render () method");
+    console.log(this.state);
+    return (
+      <>
+        <h1> I am App component</h1>
+        <h2> Counter : {this.state.counter}</h2>
+        <button
+          onClick={() => {
+            this.setState({ counter: this.state.counter + 1 });
+          }}
+        >
+          update
+        </button>
+      </>
+    );
+  }
+}
+export default App;
+
