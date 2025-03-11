@@ -2196,6 +2196,7 @@ changes in props, state.
 
 */
 
+/*
 
 import React from "react";
 
@@ -2249,4 +2250,101 @@ return true;
   }
 }
 export default App;
+*/
+// ! ======= Unmounting Phase ========
 
+// ! =======useEffect() Hook with axios =========
+/*
+? step 1:
+  npm install axios
+  npm i axios
+? step 2:
+  import variableName from axios.
+? step 3:
+  API request:
+   GET--> It will get the data.
+   POST --> It will send the data.
+   PUT --> It will update the data.
+   PATCH --> It will update the data partially.
+   DELETE --> It will delete the data.
+? step 3:
+ Working :
+  GET :
+  variablename.get("path address");
+  POST :
+  variablename.get("path address" , payload); // payload is the data to be send
+  PUT :
+  variablename.get("path address / {id}" , payload);
+  PATCH :
+  variablename.get("path address / {id}" , payload);
+  DELETE :
+  variablename.get("path address /{id}");
+*/
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const App = () => {
+  let [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    //? promises
+    //  console.log(axios.get("https://fakestoreapi.com/products"));
+    //  axios.get("https://fakestoreapi.com/products");
+    //  console.log(res);
+    //  console.log(res.data);
+    //  setProducts(res.data);
+    // }
+
+    //? async await
+    let getData = async () => {
+      let { data } = await axios.get("https://fakestoreapi.com/products"); // direct destructuring without storing in a variable.
+      console.log(data);
+      setProducts(data);
+    };
+    getData();
+  }, []);
+
+  return (
+    <>
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+            FAKE STORE AAPI
+          </h2>
+
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            {products.map((product) => (
+              <div key={product.id} className="group relative">
+                <img
+                  src={product.image}
+                  className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+                />
+                <div className="mt-4 flex justify-between">
+                  <div>
+                    {/* <h3 className="text-sm text-gray-700">
+                    <a href={product.href}>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {product.name}
+                    </a>
+                  </h3> */}
+                    <p className="mt-1 text-sm text-gray-500">
+                      {product.category}
+                    </p>
+                  </div>
+                  <p className="text-sm font-medium text-gray-900">
+                    {product.price}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default App;
+
+//================

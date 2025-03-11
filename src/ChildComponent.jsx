@@ -290,6 +290,7 @@ let Product = props => {
 export default Product;
 */
 // ?======== Task on useState() hook ==========
+/*
 
 import style from "./apitask.module.css";
 let ChildComponent = (props) => {
@@ -308,17 +309,41 @@ let ChildComponent = (props) => {
             <div>price: {val.price}</div>
             <div>description : {val.description}</div>
             <div>category: {val.category}</div>
-            {/* <div>rating	: {val.rating} <span>rate: {val.rating.rate}</span></div> */}
+            <div>rating	: {val.rating} <span>rate: {val.rating.rate}</span></div> 
           </div>
         
         
         );
       })}
-      </div>
+    </div>
 
     </>
   );
 };
 export default ChildComponent;
+*/
+
+// ! ======= Unmounting Phase =======
+
+import React, { Component } from 'react'
+
+export default class ChildComponent extends Component {
+
+  constructor(props) {
+    super();
+    console.log("i am mounted 🎉🎉🎉");
+  }
+  componentWillUnmount() {
+    console.log("I am unmounted 😞😞😞")
+  }
+
+
+  render() {
+   console.log("i am rendering 🎉🎉🎉- childcomponent");
+    return (
+      <h1>I  am childcomponent</h1>
+    )
+  }
+}
 
 
