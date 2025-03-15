@@ -2281,6 +2281,7 @@ export default App;
   variablename.get("path address /{id}");
 */
 
+/*
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -2322,12 +2323,12 @@ const App = () => {
                 />
                 <div className="mt-4 flex justify-between">
                   <div>
-                    {/* <h3 className="text-sm text-gray-700">
+                     <h3 className="text-sm text-gray-700">
                     <a href={product.href}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.name}
                     </a>
-                  </h3> */}
+                  </h3> 
                     <p className="mt-1 text-sm text-gray-500">
                       {product.category}
                     </p>
@@ -2346,5 +2347,139 @@ const App = () => {
 };
 
 export default App;
+*/
 
-//================
+//================ portal / Models ==============
+/*
+1. Portal is a way to render the children into a DOM node that exists outside the DOM hierarchy of the parent component.
+2. It is used to render the children into a different part of the DOM.
+3. It allows us to display data on the UI and without rendring into root element.
+4. How to Use:
+   Step 1 :
+        createa new element in the html file and use id and target it.'
+   Step 2:
+        import ReactDOM from "react-dom";
+        
+        ReactDOM.createPortal(content , container);
+        Ex: ReactDOM.createPortal(<h1> I am H1 tag </h1> , document.getElementById("Portal"));
+*/
+
+// ? case 1:
+/*
+import react, { useState } from "react";
+import ReactDom from "react-dom";
+
+const App = () => {
+  let [isOpen1, setOpen1] = useState(false);
+  let [isOpen2, setOpen2] = useState(false);
+
+  return (
+    <>
+      <h1>I am App Component</h1>
+
+      
+      <section style={{ border: "solid" }}>
+        <h2>Without Portal</h2>
+
+        {isOpen1 ? (
+          <h1>
+            I am display without portal{" "}
+            <button onClick={() => setOpen1(false)}>❌</button>
+          </h1>
+        ) : null}
+        <button onClick={() => setOpen1(true)}>Open1</button>
+      </section>
+
+
+      <section style={{ border: "solid" }}>
+        <h2>With Portal</h2>
+        {isOpen2
+          ? ReactDom.createPortal(
+              <h1>
+                I am display with portal{" "}
+                <button onClick={() => setOpen2(false)}>❌</button>
+              </h1>,
+              document.getElementById("portal")
+            )
+          : null}
+        <button onClick={() => setOpen2(true)}>Open2</button>
+      </section>
+    </>
+  );
+};
+
+export default App;
+*/
+
+// ? case 2:
+
+/*
+
+import React, {useState} from 'react'
+import NonPortalComponent from './portal/NonPortalComponent';
+import PortalComponent from './portal/PortalComponent';
+
+
+const App = () => {
+  let [isOpen1, setOpen1] = useState(false);
+  let [isOpen2, setOpen2] = useState(false);
+  
+  return (
+    <>
+    <h1>Without Portal</h1>
+
+    <section style={{border:"solid"}}>
+      {isOpen1 && <NonPortalComponent/>}
+      <button onClick={()=> setOpen1(true)}>Open NonPortal component</button>
+    </section>
+
+    <section style={{border:"solid"}}>
+      {isOpen2 && <PortalComponent closefn = {()=> setOpen2(false)}/>}
+      <button onClick={()=> setOpen2(true)}>Open Portal component</button>
+    </section>
+    </>
+  )
+}
+
+export default App
+*/
+// !====== task on portal ======
+
+import React, { useState } from "react";
+import PortalComponent from "./portal/PortalComponent";
+
+const App = () => {
+  let [isOpen, setOpen] = useState(false);
+
+  return (
+    <>
+      <section
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+      
+        }}
+      >
+        {isOpen && <PortalComponent closefn={() => setOpen(false)} />}
+        <button
+          onClick={() => setOpen(true)}
+          style={{
+            backgroundColor: "#a278e8",
+            color: "white",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "16px",
+            marginTop: "300px",
+          }}
+        >
+          Show Login
+        </button>
+      </section>
+    </>
+  );
+};
+
+export default App;
