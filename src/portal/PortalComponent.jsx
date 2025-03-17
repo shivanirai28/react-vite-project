@@ -50,6 +50,7 @@ export default PortalComponent;
 */
 
 // !====== task on portal ======
+/*
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -224,3 +225,4 @@ const PortalComponent = (props) => {
 };
 
 export default PortalComponent;
+*/

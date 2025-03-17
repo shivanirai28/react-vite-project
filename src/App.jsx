@@ -2444,6 +2444,7 @@ const App = () => {
 export default App
 */
 // !====== task on portal ======
+/*
 
 import React, { useState } from "react";
 import PortalComponent from "./portal/PortalComponent";
@@ -2483,3 +2484,39 @@ const App = () => {
 };
 
 export default App;
+
+*/
+// ! ======= Pure component (CBC)=========
+/*I
+ import React from 'react'
+import PureParent from './PureComponent/PureParent'
+ 
+
+ 
+ const App = () => {
+   return (
+     <>
+     <PureParent/>
+     </>
+   )
+ }
+ 
+ export default App
+ */
+
+// ! ======= Pure component (FBC)=========
+import React from 'react'
+import PureParent from './PureComponent/PureParent'
+ 
+
+ 
+ const App = () => {
+   return (
+     <>
+     <PureParent/>
+     </>
+   )
+ }
+ 
+ export default App
+ 
