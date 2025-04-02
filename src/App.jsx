@@ -2523,4 +2523,156 @@ import PureParent from './PureComponent/PureParent'
  export default App
  
  */
- 
+
+//! ========= useMemo() Hook ========
+/*
+
+import React, { useState, useMemo } from "react";
+
+const App = () => {
+  let [counter1, setCount1] = useState(0);
+  let [counter2, setCount2] = useState(0);
+
+  //? synatx: useMemo(callback , [dependency])
+  let isEven = useMemo(() => {
+    console.log("isEven() is working");
+
+    let sum = 0;
+    for (let i = 0; i <= 300000; i++) {
+      sum += i;
+    }
+    console.log(sum);
+    return counter1 % 2 === 0;
+  }, [counter1]);
+
+  return (
+    <>
+      <h1>I am App component</h1>
+      <h2>Counter1 : {counter1}</h2>
+      <button onClick={() => setCount1(counter1 + 1)}>Update counter1</button>
+
+      {isEven ? "Even" : "odd"}
+
+      <h2>Counter2 : {counter2}</h2>
+      <button onClick={() => setCount2(counter2 + 1)}>Update counter2</button>
+    </>
+  );
+};
+
+export default App;
+*/
+
+// ! ======= React - Routing (version 5)==========
+/*
+
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+};
+
+export default App;
+*/
+
+// ! ======= React - Routing (version 6)==========
+/*
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+
+const App = () => {
+  let router = createBrowserRouter([
+    {
+      path: "/home",
+      element: <Home />,
+    },
+    {
+      path: "/about",
+      element: <About />,
+    },
+    {
+      path: "/contact",
+      element: <Contact />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+  ]);
+
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
+};
+
+export default App;
+*/
+// ! ======= React - Nested - Routing (version 6)==========
+/*
+
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+
+
+const App = () => {
+
+  let router = createBrowserRouter([
+    {
+      path:"/",
+      element:<Dashboard/>,
+      children:[
+      {
+        path:"home",
+        element:<Home/>
+      },
+      {
+        path:"about",
+        element:<About/>
+      },
+      {
+        path:"contact",
+        element:<Contact/>
+      },
+      {
+        path:"login",
+        element:<Login/>
+      }   
+    ]
+
+  }
+])
+  return (
+  <>
+   <RouterProvider router={router} />
+  </>
+  )
+}
+
+export default App
+*/
