@@ -2505,6 +2505,8 @@ import PureParent from './PureComponent/PureParent'
  */
 
 // ! ======= Pure component (FBC)=========
+/*
+
 import React from 'react'
 import PureParent from './PureComponent/PureParent'
  
@@ -2519,4 +2521,6 @@ import PureParent from './PureComponent/PureParent'
  }
  
  export default App
+ 
+ */
  

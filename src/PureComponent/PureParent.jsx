@@ -31,6 +31,7 @@ class PureParent extends Component {
 export default PureParent;
 */
 // ! ======= Pure component (FBC)=========
+/*
 import React, { useState } from "react";
 import RegularChild from "./RegularChild";
 import PureChild from "./PureChild";
@@ -52,3 +53,4 @@ const PureParent = () => {
 };
 
 export default PureParent;
+*/

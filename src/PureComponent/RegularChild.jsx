@@ -16,6 +16,7 @@ import { Component } from 'react'
 export default RegularChild;
 */
 // ! ======= Pure component (FBC)=========
+/*
 import React from 'react'
 
 const RegularChild = () => {
@@ -26,3 +27,4 @@ const RegularChild = () => {
 }
 
 export default RegularChild;
+*/

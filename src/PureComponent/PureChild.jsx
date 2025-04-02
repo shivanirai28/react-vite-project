@@ -15,6 +15,7 @@ class PureChild extends PureComponent {
 export default PureChild;
 */
 // ! ======= Pure component (FBC)=========
+/*
 import React from 'react'
 
 const PureChild = () => {
@@ -25,3 +26,4 @@ const PureChild = () => {
 }
 
 export default React. memo(PureChild);
+*/
