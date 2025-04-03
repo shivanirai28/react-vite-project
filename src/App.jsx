@@ -2676,3 +2676,229 @@ const App = () => {
 
 export default App
 */
+
+//! ======== error boundary ========
+//? example 1 :
+/*
+
+import React from 'react'
+import Capgemini from './errorboundary/Capgemini'
+
+const App = () => {
+  return (
+    
+    <>
+    <Capgemini/>
+    </>
+  )
+}
+
+export default App
+*/
+//? example 2 :
+/*
+ import React from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import LoadingTask from './errorboundary/Layout'
+
+
+
+
+const App = () => {
+  
+  let data = ["Loading", "error", "Pending", "Completed", "Success", "Failure", "doing"]
+  return (
+    <center>
+    
+    <h1>Loading , success , error TASK</h1>
+
+    {
+      data.map((val, ind)=>{
+        
+        return(
+          <ErrorBoundary fallback = {<li style={{fontWeight: "bold", display: "flex",
+            flexDirection: "column",
+            padding: "20px",
+            justifyContent: "center",
+            alignItems : "center",
+            margin : "10px",
+            border : "1px solid red",
+            width : "50%"}}>Oop's</li>}>
+         <ul>
+         <LoadingTask val = {val}/>
+         </ul>
+        </ErrorBoundary>
+        )
+      })
+    }
+
+    </center>
+  )
+}
+
+export default App;
+*/
+
+//! ===========Custom hooks ===========
+/*
+import React from 'react'
+import useGreet from './custom hooks/useGreet'
+import useGreetList from './custom hooks/useGreetList';
+
+const App = () => {
+
+console.log("I am App component")
+let greetInfo = useGreet();
+console.log(greetInfo);
+
+let user1 = useGreetList("Shivani");
+let user2 = useGreetList("Tanmay");
+let user3 = useGreetList("Gyandeep");
+let user4 = useGreetList("Shriti");
+
+console.log(user1);
+console.log(user2);
+console.log(user3);
+console.log(user4);
+
+
+  return (
+    <>
+    <h3> Greeting To : {greetInfo}</h3>
+
+    </>
+  )
+}
+
+export default App
+*/
+
+// ? Example 2 :
+/*
+
+import React from 'react'
+import useGreetList from './custom hooks/useGreetList';
+
+const App = () => {
+ let myList = ["Amit", "Shivani","Tanmay", "Gyandeep"];
+
+ let receivedData = useGreetList(myList);
+ console.log(receivedData);
+
+
+
+  return (
+    <>
+    <h1>I am App component </h1>
+
+{receivedData.map((val, ind) => {
+  return (<h2 key={ind}>{val} </h2>)
+  
+})}
+    </>
+  )
+}
+
+export default App
+*/
+
+// ? Example 3 : ====== calculator ======
+/*
+
+import React from 'react'
+import useCalculator from './custom hooks/useCalculator'
+
+const App = () => {
+ 
+  let calOne = useCalculator(10,20);
+  let calTwo = useCalculator(30,40);
+
+console.log(calOne);
+console.log(calTwo)
+  return (
+
+    <center>
+    <h1>Result of calculations :</h1>
+    <hr />
+      <h2>Calculation one </h2>
+      <p>inputOne = {calOne.inputOne} And inputTwo = {calOne.inputTwo} </p>
+      <p>Addition = {calOne.addition}</p>
+      <p>Subtraction = {calOne.subtraction}</p>
+      <p>Multiplication = {calOne.multiplication}</p>
+      <p>Division = {calOne.division}</p>
+      <hr />
+
+      <h2>Calculation Two </h2>
+      <p>inputOne = {calTwo.inputOne} And inputTwo = {calTwo.inputTwo} </p>
+      <p>Addition = {calTwo.addition}</p>
+      <p>Subtraction = {calTwo.subtraction}</p>
+      <p>Multiplication = {calTwo.multiplication}</p>
+      <p>Division = {calTwo.division}</p>
+      <hr />
+
+    </center>
+  )
+}
+
+export default App
+*/
+
+//!==========React Toast==========
+
+import React from "react";
+
+import { Slide, ToastContainer, toast } from "react-toastify";
+
+function App() {
+
+  const notify1 = () =>
+    toast.error("❌ , You touched the wrong button ☠️", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Slide,
+    });
+    const notify2 = () =>
+      toast.error("✅ , You touched the Right button ❤️", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+      });
+
+  return (
+    <center>
+
+      <h1>Choose a button</h1>
+      
+      <button onClick={notify1}>Button1!</button>
+      <br />
+      <br />
+      <button onClick={notify2}>Button2!</button>
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Slide}
+      />
+    </center>
+  );
+}
+export default App;
